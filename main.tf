@@ -15,7 +15,7 @@ data "aws_ami" "it" {
 
 resource "aws_key_pair" "it" {
   key_name   = var.key_name
-  public_key = file(format("${path.cwd}/%s", var.prv_key_file_path))
+  public_key = file(format("${dirname(path.cwd)}/%s", var.pub_key_file_path))
   count      = var.create_key == "true" ? 1 : 0
 }
 
